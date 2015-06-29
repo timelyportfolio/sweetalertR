@@ -16,7 +16,11 @@ HTMLWidgets.widget({
       Array.prototype.forEach.call(
         document.querySelectorAll(x.selector)
         ,function(el){
-          el[x.event] = function(){sweetAlert(x.options);}
+          if( x.evalFunction !== null ){
+            el[x.event] = function(){sweetAlert(x.options,x.evalFunction);}
+          } else {
+            el[x.event] = function(){sweetAlert(x.options);}
+          }
         }
       )
     } else {

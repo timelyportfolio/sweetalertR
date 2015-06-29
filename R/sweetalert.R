@@ -29,9 +29,14 @@ sweetalert <- function(
   ,inputType = 'text'
   ,inputPlaceholder = ''
   ,inputValue = ''
+  ,evalFunction = NULL
   ,width = 0
   ,height = 0
 ) {
+
+
+  # convert evalFunction to htmlwidget::JS if text
+  if( !is.null(evalFunction) && !inherits(evalFunction,"JS_EVAL") ) evalFunction = htmlwidgets::JS(evalFunction)
 
   # forward options using x
   x = list(
@@ -60,6 +65,7 @@ sweetalert <- function(
       ,inputPlaceholder = inputPlaceholder
       ,inputValue = inputValue
     )
+    ,evalFunction = evalFunction
   )
 
   # create widget
