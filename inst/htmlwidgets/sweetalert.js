@@ -20,7 +20,9 @@ HTMLWidgets.widget({
         }
       )
     } else {
-      sweetAlert(x.options);
+      // if a selector not provided assume only for dependencies
+      //  and do nothing
+      //  is this a good assumption?
     }
 
   },
