@@ -5,11 +5,61 @@
 #' @import htmlwidgets
 #'
 #' @export
-sweetalert <- function(message, width = NULL, height = NULL) {
+sweetalert <- function(
+  selector = NULL
+  ,event = 'onclick'
+  ,title = ''
+  ,text = ''
+  ,type = NULL
+  ,allowOutsideClick = FALSE
+  ,showConfirmButton = TRUE
+  ,showCancelButton = FALSE
+  ,closeOnConfirm = TRUE
+  ,closeOnCancel = TRUE
+  ,confirmButtonText = 'OK'
+  ,confirmButtonColor = '#AEDEF4'
+  ,cancelButtonText = 'Cancel'
+  ,imageUrl = NULL
+  ,imageSize = NULL
+  ,timer = NULL
+  ,customClass = ''
+  ,html = FALSE
+  ,animation = TRUE
+  ,allowEscapeKey = TRUE
+  ,inputType = 'text'
+  ,inputPlaceholder = ''
+  ,inputValue = ''
+  ,width = 0
+  ,height = 0
+) {
 
   # forward options using x
   x = list(
-    message = message
+    selector = selector
+    ,event = event
+    ,options = list(
+      title = title
+      ,text = text
+      ,type = type
+      ,allowOutsideClick = allowOutsideClick
+      ,showConfirmButton = showConfirmButton
+      ,showCancelButton = showCancelButton
+      ,closeOnConfirm = closeOnConfirm
+      ,closeOnCancel = closeOnCancel
+      ,confirmButtonText = confirmButtonText
+      ,confirmButtonColor = confirmButtonColor
+      ,cancelButtonText = cancelButtonText
+      ,imageUrl = imageUrl
+      ,imageSize = imageSize
+      ,timer = timer
+      ,customClass = customClass
+      ,html = html
+      ,animation = animation
+      ,allowEscapeKey = allowEscapeKey
+      ,inputType = inputType
+      ,inputPlaceholder = inputPlaceholder
+      ,inputValue = inputValue
+    )
   )
 
   # create widget
@@ -20,19 +70,4 @@ sweetalert <- function(message, width = NULL, height = NULL) {
     height = height,
     package = 'sweetalertR'
   )
-}
-
-#' Widget output function for use in Shiny
-#'
-#' @export
-sweetalertOutput <- function(outputId, width = '100%', height = '400px'){
-  shinyWidgetOutput(outputId, 'sweetalert', width, height, package = 'sweetalertR')
-}
-
-#' Widget render function for use in Shiny
-#'
-#' @export
-renderSweetalert <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
-  shinyRenderWidget(expr, sweetalertOutput, env, quoted = TRUE)
 }

@@ -6,15 +6,22 @@ HTMLWidgets.widget({
 
   initialize: function(el, width, height) {
 
-    return {
-      // TODO: add instance fields as required
-    }
+    return { }
 
   },
 
   renderValue: function(el, x, instance) {
-
-    el.innerText = x.message;
+    //  if a selector is provided then bind sweetalert to an event
+    if (x.selector !== null){
+      Array.prototype.forEach.call(
+        document.querySelectorAll(x.selector)
+        ,function(el){
+          el[x.event] = function(){sweetAlert(x.options);}
+        }
+      )
+    } else {
+      sweetAlert(x.options);
+    }
 
   },
 
