@@ -1,10 +1,31 @@
 Package: sweetalertR
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1
-Date: 2015-06-28
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: htmlwidget for Tristan Edwards sweetalert
+Version: 0.2.0
+Date: 2016-02-04
+Authors@R: c(
+      person(
+        "Tristan", "Edwards"
+        , role = c("aut", "cph")
+        , comment = "sweetalert library in htmlwidgets/lib, https://github.com/t4t5/sweetalert"
+      ),
+      person(
+        "Kent", "Russell"
+        , role = c("aut", "cre")
+        , comment = "R interface"
+        , email = "kent.russell@timelyportfolio.com"
+      )
+    )
+Maintainer: Kent Russell <kent.russell@timelyportfolio.com>
+Description: sweet alerts in R with the convenience and infrastructure
+    of an htmlwidget.
+License: MIT + file LICENSE
 LazyData: TRUE
+Imports:
+    htmlwidgets,
+    htmltools,
+    markdown
+Suggests:
+    knitr
+VignetteBuilder: knitr
+RoxygenNote: 4.1.1.9001
